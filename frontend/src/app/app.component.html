@@ -1,1 +1,12 @@
-<router-outlet />
+<div style="position: relative; width: 100vw; height: 100vh;">
+  <app-grid-background
+    [spacing]="15"
+    [dotRadius]="1"
+    color="#e0e0e0"
+    [offsetX]="15"
+    [offsetY]="15">
+  </app-grid-background>
+
+  <div appDraggable class="draggable-box">Drag me</div>
+  <div appDraggable class="draggable-box">Drag me too</div>
+</div>
