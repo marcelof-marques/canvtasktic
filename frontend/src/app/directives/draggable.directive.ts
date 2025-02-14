@@ -30,7 +30,7 @@ export class DraggableDirective {
   private transformStyle = computed(() =>
     this.isDragging()
       ? `translate(${this.rawOffsetX()}px, ${this.rawOffsetY()}px)`
-      : `translate(${this.snappedOffsetX()}px, ${this.snappedOffsetY()}px)`
+      : `translate(${this.snappedOffsetX()}px, ${this.snappedOffsetY()}px)`,
   );
 
   constructor() {
@@ -39,12 +39,8 @@ export class DraggableDirective {
     });
 
     effect(() => {
-      document.documentElement.style.userSelect = this.isDragging()
-        ? 'none'
-        : '';
-      document.documentElement.style.cursor = this.isDragging()
-        ? 'grabbing'
-        : '';
+      document.documentElement.style.userSelect = this.isDragging() ? 'none' : '';
+      document.documentElement.style.cursor = this.isDragging() ? 'grabbing' : '';
     });
   }
 
@@ -76,9 +72,7 @@ export class DraggableDirective {
   private calculateSnap(value: number, axis: 'x' | 'y'): number {
     const spacing = this.gridService?.spacing() ?? 30;
     const offset =
-      axis === 'x'
-        ? (this.gridService?.offsetX() ?? 0)
-        : (this.gridService?.offsetY() ?? 0);
+      axis === 'x' ? (this.gridService?.offsetX() ?? 0) : (this.gridService?.offsetY() ?? 0);
 
     return Math.round((value - offset) / spacing) * spacing + offset;
   }
