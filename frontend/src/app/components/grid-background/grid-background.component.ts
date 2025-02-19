@@ -14,7 +14,6 @@ import { GridService } from '../../services/grid.service';
   imports: [],
   templateUrl: './grid-background.component.html',
   styleUrl: './grid-background.component.css',
-  providers: [GridService],
 })
 export class GridBackground implements OnInit {
   private el = inject(ElementRef);
